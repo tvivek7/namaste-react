@@ -1,0 +1,20 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "react practise app",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "vivek-tiwari",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "browsersList":[
+      "last 2 versions"
+  ]
+}
