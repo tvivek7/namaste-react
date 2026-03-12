@@ -41,3 +41,14 @@
   margin: 5px;
   cursor: pointer;
 }
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px;
+}
+.shimmer-card {
+  height: 300px;
+  width: 225px;
+  margin: 10px;
+  background-color: grey;
+}
