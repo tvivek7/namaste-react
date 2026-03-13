@@ -52,3 +52,6 @@
   margin: 10px;
   background-color: grey;
 }
+.cuisines {
+  max-width: fit-content;
+}
