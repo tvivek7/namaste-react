@@ -56,9 +56,10 @@ const RestaurantMenu = () => {
         {itemCards.map((item) => (
           <button
             onClick={() => setExpandId(item?.card?.info?.id)}
+            key={item?.card?.info?.id}
             className="card"
           >
-            <li key={item?.card?.info?.id}>
+            <li>
               {item?.card?.info?.name} {"- ₹"}
               {(item?.card?.info?.price || item?.card?.info?.defaultPrice) /
                 100}
