@@ -63,7 +63,9 @@ const RestaurantMenu = () => {
               {(item?.card?.info?.price || item?.card?.info?.defaultPrice) /
                 100}
             </li>
-            {showDescription && <h4>{item?.card?.info?.description}</h4>}
+            {showDescription && expandId === item?.card?.info?.id && (
+              <h4>{item?.card?.info?.description}</h4>
+            )}
           </button>
         ))}
       </ul>
