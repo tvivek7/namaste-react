@@ -9,6 +9,11 @@ class UserClass extends react.Component {
 
     console.log("Child Cons");
   }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
   render() {
     console.log("Child Render");
 

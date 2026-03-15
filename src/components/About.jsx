@@ -7,6 +7,11 @@ class About extends React.Component {
     super(props);
     console.log("Parent Cons");
   }
+
+  componentDidMount() {
+    console.log(" Parent componentDidMount");
+  }
+
   render() {
     console.log("Parent Render");
 
