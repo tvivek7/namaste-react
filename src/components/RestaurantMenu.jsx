@@ -2,17 +2,15 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { RES_LOGO_URL, RES_MENU_LOGO } from "../utils/constants";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
   const [expandId, setExpandId] = useState(null);
 
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const resInfo = useRestaurantMenu(resId);
 
   useEffect(() => {
     if (expandId === null) return;
@@ -20,21 +18,13 @@ const RestaurantMenu = () => {
     setShowDescription((prev) => !prev);
   }, [expandId]);
 
-  const fetchMenu = async () => {
-    const data = await fetch(`${RES_MENU_LOGO}${resId}`);
-
-    const res = await data.json();
-    setRestaurantInfo(res.data);
-  };
-
-  if (restaurantInfo === null) return <Shimmer />;
+  if (resInfo === null) return <Shimmer />;
 
   const { name, cloudinaryImageId, cuisines, costForTwoMessage, avgRating } =
-    restaurantInfo.cards[2].card?.card?.info;
+    resInfo?.cards[2].card?.card?.info;
 
   const { itemCards } =
-    restaurantInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card
-      ?.card;
+    resInfo?.cards[4].groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card;
 
   console.log(itemCards);
 

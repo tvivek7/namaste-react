@@ -3,34 +3,33 @@ import react from "react";
 class UserClass extends react.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      count: 0,
-    };
 
-    console.log(this.props.name + "Child Cons");
+    this.state = {
+      userInfo: {
+        name: "Dummy",
+        bio: "Default",
+      },
+    };
   }
 
   componentDidMount() {
-    console.log(this.props.name + "componentDidMount");
+    this.timer = setInterval(() => {
+      console.log("SET INTERVAL");
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+    clearInterval(this.timer);
   }
 
   render() {
-    console.log(this.props.name + "Child Render");
-
+    const { name, bio, avatar_url } = this.state.userInfo;
     return (
       <div className="user-card">
-        <h1>Counr : {this.state.count}</h1>
-        <button
-          onClick={() =>
-            this.setState({
-              count: this.state.count + 1,
-            })
-          }
-        >
-          Increment
-        </button>
-        <h2>{this.props.name}</h2>
-        <h2>{this.props.location}</h2>
+        <img src={avatar_url} alt="img" />
+        <h2>{name}</h2>
+        <h2>{bio}</h2>
         <h2>Contact</h2>
       </div>
     );
@@ -38,3 +37,18 @@ class UserClass extends react.Component {
 }
 
 export default UserClass;
+
+// MONTING
+
+// Constructor(dummy)
+// Render(dummy)
+//     <HTML Dummy>
+// Component Did Mount
+//      <API Call>
+//      <globalThis.setState>
+
+// UPFDATE CYCLE
+
+//     RENDER (API DATA)
+//     <HTML (NEW API DATA)>
+// Component Did Mount
