@@ -1,4 +1,4 @@
-import { RestaurantCard } from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const onlineStatus = useOnlineStatus();
+
+  const VegRestaurantCard = withVegLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -73,7 +75,11 @@ const Body = () => {
       <div className="res-container flex flex-wrap shadow-lg">
         {filteredRestaurants?.map((item) => (
           <Link to={"/restaurant/" + item.info.id} key={item.info.id}>
-            <RestaurantCard resData={item} />
+            {item.info.veg ? (
+              <VegRestaurantCard resData={item} />
+            ) : (
+              <RestaurantCard resData={item} />
+            )}
           </Link>
         ))}
       </div>

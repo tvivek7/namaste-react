@@ -1,6 +1,6 @@
 import { RES_LOGO_URL } from "../utils/constants";
 
-export const RestaurantCard = ({ resData }) => {
+const RestaurantCard = ({ resData }) => {
   const { name, cuisines, cloudinaryImageId, costForTwo, sla, avgRating } =
     resData.info;
 
@@ -19,3 +19,18 @@ export const RestaurantCard = ({ resData }) => {
     </div>
   );
 };
+
+export const withVegLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-4 p-4 rounded-lg">
+          Veg
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
+export default RestaurantCard;
