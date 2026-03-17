@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { RES_LOGO_URL, RES_MENU_LOGO } from "../utils/constants";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
+import RestaurantCategory from "../components/RestaurantCategory";
 
 const RestaurantMenu = () => {
   const [showDescription, setShowDescription] = useState(false);
@@ -27,42 +28,24 @@ const RestaurantMenu = () => {
     resInfo?.cards[4].groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card;
 
   const categories =
-    resInfo?.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards[4];
+    resInfo?.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (c) =>
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
+    );
 
   console.log("categories", categories);
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <img
-        alt="res-logo"
-        className="res-logo"
-        src={RES_LOGO_URL + cloudinaryImageId}
-      />
-      <h2>
-        {cuisines} - {costForTwoMessage}
-      </h2>
-      <h2>Menu</h2>
-
-      {/* <h2>{avgRating}</h2> */}
-      <ul>
-        {itemCards.map((item) => (
-          <button
-            onClick={() => setExpandId(item?.card?.info?.id)}
-            key={item?.card?.info?.id}
-            className="card"
-          >
-            <li>
-              {item?.card?.info?.name} {"- ₹"}
-              {(item?.card?.info?.price || item?.card?.info?.defaultPrice) /
-                100}
-            </li>
-            {showDescription && expandId === item?.card?.info?.id && (
-              <h4>{item?.card?.info?.description}</h4>
-            )}
-          </button>
-        ))}
-      </ul>
+    <div className="text-center">
+      <h1 className="font-bold my-2 text-2xl">{name}</h1>
+      <p className="font-bold text-lg">
+        {cuisines.join(" ,")} - {costForTwoMessage}
+      </p>
+      {/* categories accordion */}
+      {categories.map((category) => (
+        <RestaurantCategory data={category.card.card} />
+      ))}
     </div>
   );
 };
