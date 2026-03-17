@@ -6,6 +6,7 @@ const RestaurantCategory = ({ data }) => {
   return (
     <div className="w-full bg-gray-300 shadow-lg p-4">
       <span>{data.title}</span>
+      <span>{"⬇️"}</span>
     </div>
   );
 };
