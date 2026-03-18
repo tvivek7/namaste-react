@@ -33,7 +33,7 @@ hover:bg-orange-300 hover:text-white
 hover:shadow-[0_0_20px_#3b82f6] 
 transition duration-300"
             >
-              Add ⚡
+              Add to Cart
             </button>
           </div>
         </div>
