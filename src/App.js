@@ -8,7 +8,6 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
-// import Grocery from "./components/Grocery";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const Grocery = lazy(() => import("./components/Grocery"));

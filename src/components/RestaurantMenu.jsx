@@ -6,18 +6,10 @@ import useRestaurantMenu from "../hooks/useRestaurantMenu";
 import RestaurantCategory from "../components/RestaurantCategory";
 
 const RestaurantMenu = () => {
-  const [showDescription, setShowDescription] = useState(false);
-  const [expandId, setExpandId] = useState(null);
-
+  const [showIndex, setShowIndex] = useState(null);
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId);
-
-  useEffect(() => {
-    if (expandId === null) return;
-
-    setShowDescription((prev) => !prev);
-  }, [expandId]);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -41,10 +33,12 @@ const RestaurantMenu = () => {
         {cuisines.join(" ,")} - {costForTwoMessage}
       </p>
       {/* categories accordion */}
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <RestaurantCategory
-          key={category.card.card.id}
+          key={index}
           data={category.card.card}
+          showItems={index === showIndex && true}
+          setShowIndex={() => setShowIndex(index)}
         />
       ))}
     </div>
