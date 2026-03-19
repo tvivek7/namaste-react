@@ -35,6 +35,8 @@ const Body = () => {
 
   if (listOfRestaurants.length === 0) return <Shimmer />;
 
+  console.log("filteredRestaurants", filteredRestaurants);
+
   return (
     <div className="body">
       <div className="filter flex m-4 p-4">
@@ -61,10 +63,11 @@ const Body = () => {
           <button
             className="px-4 m-4 bg-orange-300 rounded-lg"
             onClick={() => {
+              console.log("clicked");
               const filteredItems = listOfRestaurants.filter(
                 (item) => item.info.avgRating > 4.4,
               );
-              setListOfRestaurants(filteredItems);
+              setFilteredRestaurants(filteredItems);
             }}
           >
             Top Rated Restaurants
