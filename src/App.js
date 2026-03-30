@@ -12,6 +12,7 @@ import "../index.css";
 import UserContext from "./utils/userContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -56,6 +57,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Cart />,
+          </Suspense>
+        ),
       },
       {
         path: "/grocery",

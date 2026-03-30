@@ -3,13 +3,18 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserContext from "../utils/userContext";
+import { useSelector } from "react-redux";
+
 export const Header = () => {
   const [btnText, setBtntext] = useState(false);
 
+  // subscribing to store and getting data from store
+  const cartItems = useSelector((store) => store.cart.items);
+
+  console.log("cartItems", cartItems);
+
   const onlineStatus = useOnlineStatus();
   const contextData = useContext(UserContext);
-
-  console.log("contextData", contextData);
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg mb-2">
@@ -31,9 +36,9 @@ export const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="px-4">
-            <Link to="/grocery">Grocery</Link>
+            <Link to="/cart">Cart</Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4">Cart {cartItems.length}</li>
           <button onClick={() => setBtntext((prev) => !prev)} className="px-4">
             {btnText ? "Logout" : "Login"}
           </button>

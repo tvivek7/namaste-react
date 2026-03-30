@@ -1,6 +1,19 @@
 import React from "react";
 import { RES_LOGO_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
+
 const ItemList = ({ items, dummy }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeItem(item));
+  };
+
   return (
     <div>
       {items?.map((item) => (
@@ -22,8 +35,17 @@ const ItemList = ({ items, dummy }) => {
               src={RES_LOGO_URL + item.card.info.imageId}
               alt="img"
             />
-            <button className="px-4 py-2 rounded-xl text-orange-300 font-semibold border border-orange-300 hover:bg-orange-300 hover:text-white  hover:shadow-[0_0_20px_#3b82f6]  transition duration-300">
+            <button
+              onClick={() => handleAddItem(item)}
+              className="px-4 py-2 rounded-xl text-orange-300 font-semibold border border-orange-300 hover:bg-orange-300 hover:text-white  hover:shadow-[0_0_20px_#3b82f6]  transition duration-300"
+            >
               Add to Cart
+            </button>
+            <button
+              onClick={() => handleRemoveItem(item)}
+              className="px-4 py-2 rounded-xl text-orange-300 font-semibold border border-orange-300 hover:bg-orange-300 hover:text-white  hover:shadow-[0_0_20px_#3b82f6]  transition duration-300"
+            >
+              Remove from Cart
             </button>
           </div>
         </div>
