@@ -10,8 +10,10 @@ const ItemList = ({ items, dummy }) => {
     dispatch(addItem(item));
   };
 
-  const handleRemoveItem = (item) => {
-    dispatch(removeItem(item));
+  const handleRemoveItem = (id) => {
+    console.log("id", id);
+
+    dispatch(removeItem(id));
   };
 
   return (
@@ -42,7 +44,7 @@ const ItemList = ({ items, dummy }) => {
               Add to Cart
             </button>
             <button
-              onClick={() => handleRemoveItem(item)}
+              onClick={() => handleRemoveItem(item.card.info.id)}
               className="px-4 py-2 rounded-xl text-orange-300 font-semibold border border-orange-300 hover:bg-orange-300 hover:text-white  hover:shadow-[0_0_20px_#3b82f6]  transition duration-300"
             >
               Remove from Cart
