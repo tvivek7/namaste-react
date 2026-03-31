@@ -63,7 +63,6 @@ const Body = () => {
           <button
             className="px-4 m-4 bg-orange-300 rounded-lg"
             onClick={() => {
-              console.log("clicked");
               const filteredItems = listOfRestaurants.filter(
                 (item) => item.info.avgRating > 4.4,
               );

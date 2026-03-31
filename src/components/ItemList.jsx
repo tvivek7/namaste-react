@@ -11,8 +11,6 @@ const ItemList = ({ items, dummy }) => {
   };
 
   const handleRemoveItem = (id) => {
-    console.log("id", id);
-
     dispatch(removeItem(id));
   };
 

@@ -11,8 +11,6 @@ export const Header = () => {
   // subscribing to store and getting data from store
   const cartItems = useSelector((store) => store.cart.items);
 
-  console.log("cartItems", cartItems);
-
   const onlineStatus = useOnlineStatus();
   const contextData = useContext(UserContext);
 

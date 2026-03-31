@@ -6,8 +6,6 @@ const Cart = () => {
   const cartData = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
-  console.log(cartData);
-
   const clearCart = () => {
     dispatch(clearItems());
   };
