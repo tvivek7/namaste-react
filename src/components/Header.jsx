@@ -36,9 +36,8 @@ export const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="px-4">
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Cart - {cartItems.length}</Link>
           </li>
-          <li className="px-4">Cart {cartItems.length}</li>
           <button onClick={() => setBtntext((prev) => !prev)} className="px-4">
             {btnText ? "Logout" : "Login"}
           </button>
